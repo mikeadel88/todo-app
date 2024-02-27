@@ -1,0 +1,42 @@
+<div>
+    <h2 class="text-center text-primary ">Todo list App</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/4697/4697260.png" width="200" class="mx-auto d-block mb-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="mb-2">
+                    <input
+                        type="text" class="form-control"name="" id=""placeholder="Enter Your Task" 
+                        [(ngModel)]="todo.title"
+                    />
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-primary" (click)="createTodo()"> Add Task</button>
+            </div>
+            
+                <div class="col-sm-11">
+                    <table class="table table-light table-bordered">
+                        <thead>
+                            <tr>
+                                <th>item</th>
+                                <th>Edit</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for( todo of todos;track todo.id){
+                                <tr>
+                                    <td> <a [routerLink]="[ '/todo', todo.id ]"class="text-decoration-none text-capitalize">{{todo.title}}</a> </td>
+                                    <td><button class="btn btn-danger" [routerLink]="[ '/todo', todo.id ]">Edit</button></td>
+                                    <td><button class="btn btn-danger"(click)="deleteTodo(todo.id)" >Remove</button></td></tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                </div>
+            
+          
+        </div>
+    </div>
+</div>
